@@ -2,20 +2,25 @@ import { useState, useEffect } from "react";
 
 // ─────────── THEME ───────────
 
+const GRADIENT = "linear-gradient(135deg, #8a6cb8, #d4718e)";
+const RAINBOW = "linear-gradient(90deg, #F9C5C5, #FDDBB4, #FFF0A8, #C2EDD0, #BEE3F8, #D8C8F8, #EED4F8)";
+
 const T = {
   dark: {
     bg: "#0a0a0a", card: "#111", border: "#1e1e1e", inputBg: "#0e0e0e",
     text: "#e8e8e8", textMuted: "#888", textDim: "#555", textSub: "#aaa",
-    accent: "#7eb8e0", btnBg: "#1a1a1a", tagBg: "#1a1a1a",
-    checkBg: "#0c1520", checkColor: "#7eb8e0",
-    zoneSafe: "#0a1a10", zoneHyper: "#1a0a0a", zoneHypo: "#0c1520",
+    accent: "#b9a0dc", btnBg: "#1a1a1a", tagBg: "#1a1a1a",
+    checkBg: "#1a1226", checkColor: "#b9a0dc",
+    zoneSafe: "#0a1a10", zoneHyper: "#1a0a0a", zoneHypo: "#120a1a",
+    gradient: GRADIENT, rainbow: RAINBOW,
   },
   light: {
     bg: "#f5f5f0", card: "#ffffff", border: "#e0e0e0", inputBg: "#fafafa",
     text: "#222", textMuted: "#666", textDim: "#999", textSub: "#555",
-    accent: "#3B7DD8", btnBg: "#f5f5f5", tagBg: "#f0f0f0",
-    checkBg: "#EAF2FF", checkColor: "#3B7DD8",
-    zoneSafe: "#eafaf0", zoneHyper: "#fff0f0", zoneHypo: "#eaf4fc",
+    accent: "#8a6cb8", btnBg: "#f5f5f5", tagBg: "#f0f0f0",
+    checkBg: "#F3EEFA", checkColor: "#8a6cb8",
+    zoneSafe: "#eafaf0", zoneHyper: "#fff0f0", zoneHypo: "#f3eefa",
+    gradient: GRADIENT, rainbow: RAINBOW,
   },
 };
 
@@ -768,11 +773,14 @@ export default function App() {
   return (
     <div style={{ maxWidth: 720, margin: "0 auto", padding: "32px 20px 60px" }}>
 
+      {/* Rainbow accent strip */}
+      <div aria-hidden="true" style={{ height: 4, borderRadius: 3, background: t.rainbow, marginBottom: 20 }} />
+
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24 }}>
         <div>
           <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", color: t.textDim, marginBottom: 4 }}>Trauma-Informed Practice</div>
-          <h1 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 28, fontWeight: 800, color: t.text, letterSpacing: -0.5, marginBottom: 4 }}>Activity Adaptation Planner</h1>
+          <h1 style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 34, fontWeight: 700, color: t.text, letterSpacing: -0.5, marginBottom: 6, lineHeight: 1.1 }}>Activity Adaptation Planner</h1>
           <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textMuted, letterSpacing: 1 }}>SAMHSA + DIR + Polyvagal + NMT + Sensory + Interoception</div>
         </div>
         <ThemeToggle dark={dark} toggle={() => setDark((d) => !d)} t={t} />
@@ -788,7 +796,7 @@ export default function App() {
       {/* Tabs */}
       <div className="no-print" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 20 }}>
         {tabs.map((tab) => (
-          <button key={tab.key} onClick={() => { setActiveTab(tab.key); setExpanded(null); }} style={{ padding: "8px 16px", borderRadius: 20, border: `1px solid ${activeTab === tab.key ? t.accent : t.border}`, background: activeTab === tab.key ? t.accent : "transparent", color: activeTab === tab.key ? "#fff" : t.textMuted, fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.2s", cursor: "pointer" }}>
+          <button key={tab.key} onClick={() => { setActiveTab(tab.key); setExpanded(null); }} style={{ padding: "8px 16px", borderRadius: 999, border: `1px solid ${activeTab === tab.key ? "transparent" : t.border}`, background: activeTab === tab.key ? t.gradient : "transparent", color: activeTab === tab.key ? "#fff" : t.textMuted, fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.2s", cursor: "pointer", boxShadow: activeTab === tab.key ? "0 3px 12px rgba(138,108,184,0.25)" : "none" }}>
             {tab.label}
           </button>
         ))}
