@@ -711,6 +711,62 @@ function NotesField({ value, onChange, color, t }) {
   );
 }
 
+// ─────────── ABOUT MODAL ───────────
+
+function AboutModal({ onClose, t }) {
+  const h3 = { fontFamily: "'Fraunces', Georgia, serif", fontSize: 18, fontWeight: 600, color: t.text, margin: "22px 0 8px", display: "flex", alignItems: "center", gap: 8 };
+  const p = { fontSize: 14, color: t.textSub, lineHeight: 1.65, marginBottom: 10 };
+  const li = { fontSize: 14, color: t.textSub, lineHeight: 1.65, marginBottom: 4 };
+  return (
+    <div onClick={(e) => { if (e.target === e.currentTarget) onClose(); }} role="dialog" aria-modal="true" aria-labelledby="about-title"
+      style={{ position: "fixed", inset: 0, background: "rgba(10,10,15,0.55)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: 16, overflowY: "auto" }}
+      className="no-print">
+      <div style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 18, maxWidth: 640, width: "100%", maxHeight: "90vh", overflowY: "auto", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, padding: "22px 26px 14px", borderBottom: `1px solid ${t.border}` }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <div style={{ width: 44, height: 44, borderRadius: 12, background: t.gradient, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>📖</div>
+            <div>
+              <h2 id="about-title" style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 22, fontWeight: 700, color: t.text, lineHeight: 1.2 }}>About Activity Adaptation Planner</h2>
+              <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textMuted, letterSpacing: 1, marginTop: 2 }}>RTN Communication &amp; Literacy</div>
+            </div>
+          </div>
+          <button onClick={onClose} aria-label="Close" style={{ background: "transparent", border: "none", color: t.textMuted, fontSize: 26, lineHeight: 1, cursor: "pointer", padding: 4 }}>×</button>
+        </div>
+
+        <div style={{ padding: "6px 26px 24px" }}>
+          <h3 style={h3}><span>✨</span>About this resource</h3>
+          <p style={p}>Activity Adaptation Planner is a free, open-source tool for applying trauma-informed, neurodevelopmental, and sensory lenses to everyday learning activities. It was built by a speech-language pathologist to support SLPs, educators, OTs, and interventionists in adapting instruction for students with trauma histories, sensory differences, and developmental variability.</p>
+          <p style={p}>The tool runs entirely in your browser. No account, login, or internet connection is required after the initial load. No data is sent to any server, stored in any database, or shared with any third party. Plan data exists only in browser memory during use unless you choose to export it.</p>
+
+          <h3 style={h3}><span>🔬</span>Evidence basis</h3>
+          <p style={p}>The six lenses reflect converging evidence-based frameworks for trauma-informed and developmentally attuned practice:</p>
+          <ul style={{ paddingLeft: 20, marginBottom: 10 }}>
+            <li style={li}>SAMHSA's six principles of trauma-informed care (SAMHSA, 2014; Bath, 2008)</li>
+            <li style={li}>DIR/Floortime functional emotional developmental capacities (Greenspan &amp; Wieder, 2006)</li>
+            <li style={li}>Polyvagal Theory and the Window of Tolerance (Porges, 2011; Siegel, 2012; Ogden et al., 2006)</li>
+            <li style={li}>Neurosequential Model of Therapeutics (Perry, 2006)</li>
+            <li style={li}>Ayres Sensory Integration and sensory processing frameworks (Ayres, 2005; Dunn, 2014; Champagne &amp; Stromberg, 2004)</li>
+            <li style={li}>Interoception-based regulation research (Mahler et al., 2022, 2024)</li>
+          </ul>
+          <p style={p}>Prompts and adaptations are synthesized from peer-reviewed literature on trauma-informed care in educational and clinical settings (O'Leary et al., 2023; Rupert &amp; Bartlett, 2022; Goldstein et al., 2024; Cole et al., 2005).</p>
+
+          <h3 style={h3}><span>⚖️</span>Disclaimer</h3>
+          <p style={p}>This tool is designed to support reflective planning for qualified professionals. It is not a diagnostic tool and is not a substitute for clinical judgment, formal assessment, trauma-specific therapy, or individualized treatment planning. Users are responsible for ensuring that their practices comply with applicable professional standards, scope of practice guidelines, and institutional policies.</p>
+          <p style={p}>Activity Adaptation Planner is an independent project and is not affiliated with, endorsed by, or sponsored by SAMHSA, ICDL, the ChildTrauma Academy, or any other organization whose frameworks are referenced. All program names and trademarks belong to their respective owners.</p>
+
+          <h3 style={h3}><span>📎</span>Citation</h3>
+          <div style={{ fontSize: 13, color: t.textSub, fontStyle: "italic", background: t.inputBg, border: `1px solid ${t.border}`, borderRadius: 10, padding: "12px 14px", lineHeight: 1.6 }}>
+            Norton, R. T. (2026). Activity Adaptation Planner: A trauma-informed lens for adapting learning activities [Web application]. RTN Communication &amp; Literacy.
+          </div>
+
+          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textDim, letterSpacing: 0.5, marginTop: 18, textAlign: "center" }}>Code licensed under MIT. Educational content licensed under CC BY-NC 4.0.</div>
+          <div aria-hidden="true" style={{ height: 3, borderRadius: 3, background: t.rainbow, marginTop: 14 }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─────────── MAIN APP ───────────
 
 export default function App() {
@@ -722,11 +778,18 @@ export default function App() {
   const [notes, setNotes] = useState({});
   const [nervousState, setNervousState] = useState(null);
   const [wotZone, setWotZone] = useState(null);
+  const [showAbout, setShowAbout] = useState(false);
 
   const t = dark ? T.dark : T.light;
 
   useEffect(() => { document.body.style.background = t.bg; document.body.style.color = t.text; }, [dark]);
   useEffect(() => { const el = document.createElement("style"); el.textContent = STYLE; document.head.appendChild(el); return () => el.remove(); }, []);
+  useEffect(() => {
+    if (!showAbout) return;
+    const onKey = (e) => { if (e.key === "Escape") setShowAbout(false); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [showAbout]);
 
   const toggleCheck = (key) => setChecked((p) => ({ ...p, [key]: !p[key] }));
   const setNote = (id, val) => setNotes((p) => ({ ...p, [id]: val }));
@@ -1078,9 +1141,15 @@ export default function App() {
 
       {/* Footer */}
       <footer style={{ textAlign: "center", marginTop: 48, paddingTop: 20, borderTop: `1px solid ${t.border}`, fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textDim, letterSpacing: 0.5, lineHeight: 1.8 }}>
+        <button onClick={() => setShowAbout(true)} className="no-print" aria-label="About this resource"
+          style={{ background: "transparent", border: `1px solid ${t.border}`, borderRadius: 20, padding: "6px 16px", fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textMuted, cursor: "pointer", letterSpacing: 0.5, marginBottom: 14, display: "inline-flex", alignItems: "center", gap: 6 }}>
+          📖 About this resource
+        </button>
         <p>Rachel Norton, MS, CCC-SLP</p>
         <p>RTN Communication & Literacy &middot; rachelslp.org</p>
       </footer>
+
+      {showAbout && <AboutModal onClose={() => setShowAbout(false)} t={t} />}
     </div>
   );
 }
