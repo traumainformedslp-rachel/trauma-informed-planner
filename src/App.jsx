@@ -1,25 +1,25 @@
 import { useState, useEffect } from "react";
 
-// ─────────── THEME ───────────
+// ─────────── THEME — Editorial Calm ───────────
 
-const GRADIENT = "linear-gradient(135deg, #8a6cb8, #d4718e)";
-const RAINBOW = "linear-gradient(90deg, #F9C5C5, #FDDBB4, #FFF0A8, #C2EDD0, #BEE3F8, #D8C8F8, #EED4F8)";
+const GRADIENT = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 50%, #f4b5c5 100%)";
+const RAINBOW  = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 50%, #f4b5c5 100%)";
 
 const T = {
   dark: {
-    bg: "#0a0a0a", card: "#111", border: "#1e1e1e", inputBg: "#0e0e0e",
-    text: "#e8e8e8", textMuted: "#888", textDim: "#555", textSub: "#aaa",
-    accent: "#b9a0dc", btnBg: "#1a1a1a", tagBg: "#1a1a1a",
-    checkBg: "#1a1226", checkColor: "#b9a0dc",
-    zoneSafe: "#0a1a10", zoneHyper: "#1a0a0a", zoneHypo: "#120a1a",
+    bg: "#1a1815", card: "#232020", border: "#34302c", inputBg: "#1a1815",
+    text: "#ece5d9", textMuted: "#82796f", textDim: "#5c544c", textSub: "#b9b0a3",
+    accent: "#c4abe2", btnBg: "#232020", tagBg: "#2a2724",
+    checkBg: "#261e30", checkColor: "#c4abe2",
+    zoneSafe: "#1e2b22", zoneHyper: "#2e1f24", zoneHypo: "#261e30",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
   light: {
-    bg: "#f5f5f0", card: "#ffffff", border: "#e0e0e0", inputBg: "#fafafa",
-    text: "#222", textMuted: "#666", textDim: "#999", textSub: "#555",
-    accent: "#8a6cb8", btnBg: "#f5f5f5", tagBg: "#f0f0f0",
-    checkBg: "#F3EEFA", checkColor: "#8a6cb8",
-    zoneSafe: "#eafaf0", zoneHyper: "#fff0f0", zoneHypo: "#f3eefa",
+    bg: "#fbf8f4", card: "#ffffff", border: "#e6dfd5", inputBg: "#faf6f1",
+    text: "#2a2724", textMuted: "#56504a", textDim: "#847d75", textSub: "#56504a",
+    accent: "#7a5ea8", btnBg: "#faf6f1", tagBg: "#f5efe7",
+    checkBg: "#efe8f6", checkColor: "#7a5ea8",
+    zoneSafe: "#e8f6ed", zoneHyper: "#faeaee", zoneHypo: "#efe8f6",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
 };
@@ -50,7 +50,7 @@ const REFERENCES = [
 
 const SAMHSA = [
   {
-    id: "safety", label: "Safety", color: "#27ae60",
+    id: "safety", label: "Safety", color: "#4f9c74",
     source: "SAMHSA, 2014; Bath, 2008; Porges, 2011",
     desc: "Ensuring physical and emotional safety throughout the environment and interactions.",
     prompts: [
@@ -70,7 +70,7 @@ const SAMHSA = [
     ],
   },
   {
-    id: "trust", label: "Trustworthiness & Transparency", color: "#7eb8e0",
+    id: "trust", label: "Trustworthiness & Transparency", color: "#5a8aaa",
     source: "SAMHSA, 2014; Bath, 2008; Cole et al., 2005",
     desc: "Building and maintaining trust through transparency, consistency, and clear expectations.",
     prompts: [
@@ -90,7 +90,7 @@ const SAMHSA = [
     ],
   },
   {
-    id: "peer", label: "Peer Support", color: "#e89b2d",
+    id: "peer", label: "Peer Support", color: "#b87c4e",
     source: "SAMHSA, 2014; Perry, 2006",
     desc: "Promoting healing and connection through peer relationships and mutual support.",
     prompts: [
@@ -110,7 +110,7 @@ const SAMHSA = [
     ],
   },
   {
-    id: "collaboration", label: "Collaboration & Mutuality", color: "#9b59b6",
+    id: "collaboration", label: "Collaboration & Mutuality", color: "#7a5ea8",
     source: "SAMHSA, 2014; Greenspan & Wieder, 2006",
     desc: "Partnering with the student and leveling power differences in the relationship.",
     prompts: [
@@ -130,7 +130,7 @@ const SAMHSA = [
     ],
   },
   {
-    id: "empowerment", label: "Empowerment, Voice & Choice", color: "#e63946",
+    id: "empowerment", label: "Empowerment, Voice & Choice", color: "#c47086",
     source: "SAMHSA, 2014; Cole et al., 2005",
     desc: "Prioritizing student agency, strengths, and self-advocacy throughout the activity.",
     prompts: [
@@ -150,7 +150,7 @@ const SAMHSA = [
     ],
   },
   {
-    id: "cultural", label: "Cultural, Historical & Gender Issues", color: "#2c8c99",
+    id: "cultural", label: "Cultural, Historical & Gender Issues", color: "#5a8aaa",
     source: "SAMHSA, 2014; O'Leary et al., 2023",
     desc: "Addressing cultural, historical, and gender-related factors that affect the student's experience.",
     prompts: [
@@ -176,7 +176,7 @@ const SAMHSA = [
 const DIR_LEVELS = [
   {
     level: 1, label: "Shared Attention & Regulation", subtitle: "Calm, alert, engaged",
-    color: "#7eb8e0", source: "Greenspan & Wieder, 2006; Porges, 2011",
+    color: "#5a8aaa", source: "Greenspan & Wieder, 2006; Porges, 2011",
     desc: "Can the student achieve and maintain a calm, focused, alert state during the activity?",
     prompts: [
       "Does {activity} allow for co-regulation support?",
@@ -200,7 +200,7 @@ const DIR_LEVELS = [
   },
   {
     level: 2, label: "Engagement & Relating", subtitle: "Warm, trusting connection",
-    color: "#27ae60", source: "Greenspan & Wieder, 2006; Perry, 2006",
+    color: "#4f9c74", source: "Greenspan & Wieder, 2006; Perry, 2006",
     desc: "Can the student engage in a warm, trusting relationship with the adult or peers during this task?",
     prompts: [
       "Is there a trusting relationship in place before asking the student to do {activity}?",
@@ -224,7 +224,7 @@ const DIR_LEVELS = [
   },
   {
     level: 3, label: "Two-Way Communication", subtitle: "Purposeful back-and-forth",
-    color: "#e89b2d", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
+    color: "#b87c4e", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
     desc: "Can the student engage in purposeful back-and-forth interaction (gestural or verbal) during the activity?",
     prompts: [
       "Does {activity} support back-and-forth exchanges, or is it one-directional?",
@@ -247,7 +247,7 @@ const DIR_LEVELS = [
   },
   {
     level: 4, label: "Complex Communication & Problem-Solving", subtitle: "Sustained shared thinking",
-    color: "#9b59b6", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
+    color: "#7a5ea8", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
     desc: "Can the student sustain a chain of back-and-forth interactions to solve problems or negotiate during the activity?",
     prompts: [
       "Does {activity} require sustained problem-solving or negotiation?",
@@ -270,7 +270,7 @@ const DIR_LEVELS = [
   },
   {
     level: 5, label: "Emotional Ideas", subtitle: "Symbolic & creative use of ideas",
-    color: "#e63946", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
+    color: "#c47086", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
     desc: "Can the student use ideas creatively and symbolically — through language, pretend play, or imagination — during the activity?",
     prompts: [
       "Does {activity} invite creative or imaginative thinking?",
@@ -293,7 +293,7 @@ const DIR_LEVELS = [
   },
   {
     level: 6, label: "Emotional Thinking", subtitle: "Logical bridges between ideas",
-    color: "#2c8c99", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
+    color: "#5a8aaa", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
     desc: "Can the student build logical bridges between ideas — connecting cause and effect, comparing perspectives, and reflecting?",
     prompts: [
       "Does {activity} ask the student to reason, compare, or connect ideas logically?",
@@ -321,21 +321,21 @@ const DIR_LEVELS = [
 const POLYVAGAL_STATES = [
   {
     id: "ventral", label: "Ventral Vagal", subtitle: "Safe & Social",
-    color: "#27ae60", icon: "\u2764",
+    color: "#4f9c74", icon: "\u2764",
     desc: "The student appears calm, connected, and socially engaged. They can think, learn, and relate.",
     approach: "This is the ideal window for learning. Enrich, challenge gently, and build skills.",
     sensoryFocus: "Enrichment activities: varied textures, music, collaborative movement, creative expression",
   },
   {
     id: "sympathetic", label: "Sympathetic", subtitle: "Fight / Flight",
-    color: "#e63946", icon: "\u26A1",
+    color: "#c47086", icon: "\u26A1",
     desc: "The student's body is mobilized — restless, reactive, anxious, irritable, or hypervigilant. Their nervous system is saying 'danger.'",
     approach: "Prioritize calming and organizing sensory input. Do not add cognitive demands until the body settles.",
     sensoryFocus: "Calming input: deep pressure, slow rhythmic movement, low lighting, reduced noise, heavy work, weighted items",
   },
   {
     id: "dorsal", label: "Dorsal Vagal", subtitle: "Freeze / Shutdown",
-    color: "#7eb8e0", icon: "\u2744",
+    color: "#5a8aaa", icon: "\u2744",
     desc: "The student appears flat, disconnected, withdrawn, spacey, or collapsed. Their nervous system has shut down to protect them.",
     approach: "Gently activate — do not startle or demand. Use warmth, rhythm, and gentle sensory invitations.",
     sensoryFocus: "Alerting input: gentle movement, bright colors, crunchy/cold snacks, upbeat rhythm, playful affect, position changes",
@@ -343,17 +343,17 @@ const POLYVAGAL_STATES = [
 ];
 
 const WINDOW_ZONES = [
-  { id: "hyper", label: "Hyperarousal Zone", color: "#e63946",
+  { id: "hyper", label: "Hyperarousal Zone", color: "#c47086",
     desc: "Above the window: anxiety, panic, hypervigilance, emotional flooding, aggression, rapid speech/movement",
     goal: "Bring the student DOWN into the window with calming, organizing, grounding input",
     strategies: ["Deep pressure (weighted blanket, bear hug, wall push-ups)", "Slow rhythmic movement (rocking, swinging)", "Cold water on wrists, ice cube to hold", "Dim lighting, reduce noise", "Slow, low-tone voice", "Bilateral movement (cross-body tapping, walking)"],
   },
-  { id: "window", label: "Window of Tolerance", color: "#27ae60",
+  { id: "window", label: "Window of Tolerance", color: "#4f9c74",
     desc: "In the window: regulated, flexible, able to think and feel simultaneously, can tolerate manageable stress",
     goal: "Maintain and gently expand the window through enrichment and supported challenge",
     strategies: ["Introduce new learning and skill-building", "Practice emotional vocabulary and body awareness", "Engage in collaborative problem-solving", "Offer meaningful choice within structured tasks", "Build interoceptive awareness", "Celebrate effort and process"],
   },
-  { id: "hypo", label: "Hypoarousal Zone", color: "#7eb8e0",
+  { id: "hypo", label: "Hypoarousal Zone", color: "#5a8aaa",
     desc: "Below the window: numbness, disconnection, flat affect, dissociation, lethargy, social withdrawal",
     goal: "Bring the student UP into the window with alerting, activating, connecting input",
     strategies: ["Gentle movement (stretching, walking, bouncing)", "Crunchy or sour snacks, cold drinks", "Bright or warm lighting", "Upbeat music or rhythmic clapping", "Playful, animated affect from the adult", "Position changes (stand up, change seats, move rooms)"],
@@ -361,22 +361,22 @@ const WINDOW_ZONES = [
 ];
 
 const NMT_SEQUENCE = [
-  { level: 1, label: "Brainstem", subtitle: "Regulate", color: "#e63946",
+  { level: 1, label: "Brainstem", subtitle: "Regulate", color: "#c47086",
     desc: "Patterned, repetitive, rhythmic, somatosensory. Address the body first — the brainstem controls basic regulation (heart rate, breathing, startle response, sleep-wake cycles).",
     question: "Is this student's body regulated enough to be present?",
     activities: ["Rhythmic drumming or clapping", "Rocking, swinging, bouncing", "Deep breathing with visual support", "Heavy work (carrying, pushing, pulling)", "Predictable routine and sensory environment"],
   },
-  { level: 2, label: "Midbrain", subtitle: "Relate", color: "#e89b2d",
+  { level: 2, label: "Midbrain", subtitle: "Relate", color: "#b87c4e",
     desc: "Relational, attuned, nurturing. Once regulated, the student can begin to connect. The midbrain processes reward, attachment, and relational safety.",
     question: "Does this student feel safe enough with me to engage?",
     activities: ["Warm greeting rituals", "Shared play or co-creative activities", "Attunement through affect matching", "Parallel activities (drawing together, side-by-side reading)", "Gentle humor and playfulness"],
   },
-  { level: 3, label: "Limbic", subtitle: "Reason", color: "#27ae60",
+  { level: 3, label: "Limbic", subtitle: "Reason", color: "#4f9c74",
     desc: "Emotional, relational, narrative. With regulation and connection in place, the student can begin to process emotions, build narratives, and develop relational skills.",
     question: "Can this student tolerate emotional content right now?",
     activities: ["Story-based activities", "Emotion identification and labeling", "Social problem-solving scenarios", "Perspective-taking activities", "Memory and narrative building"],
   },
-  { level: 4, label: "Cortex", subtitle: "Learn", color: "#7eb8e0",
+  { level: 4, label: "Cortex", subtitle: "Learn", color: "#5a8aaa",
     desc: "Abstract, cognitive, creative. Only when regulated, connected, and emotionally safe can the cortex fully engage for academic and complex cognitive work.",
     question: "Is this student ready for cognitive demands?",
     activities: ["Academic instruction and practice", "Abstract reasoning tasks", "Reading comprehension", "Writing and composition", "Complex multi-step problem-solving"],
@@ -387,7 +387,7 @@ const NMT_SEQUENCE = [
 
 const SENSORY = [
   {
-    id: "tactile", label: "Tactile", color: "#e89b2d",
+    id: "tactile", label: "Tactile", color: "#b87c4e",
     neuroscience: "Trauma often disrupts the tactile system — unexpected touch may trigger a protective stress response. The skin is the body's largest sensory organ and a primary boundary between self and world. For students with trauma histories, touch can carry associations with harm, and even neutral tactile input may be interpreted as threat.",
     evidence: "Ayres Sensory Integration; Champagne Sensory Modulation; Ogden Sensorimotor Psychotherapy",
     samhsa: "Safety, Empowerment/Voice/Choice",
@@ -414,7 +414,7 @@ const SENSORY = [
     },
   },
   {
-    id: "auditory", label: "Auditory", color: "#7eb8e0",
+    id: "auditory", label: "Auditory", color: "#5a8aaa",
     neuroscience: "The auditory system is directly linked to the threat-detection circuits in the brainstem and amygdala. For trauma-affected students, sudden or loud sounds can trigger a startle response, hypervigilance, or dissociation. Porges' polyvagal theory explains how the middle ear muscles tune to human voice frequencies when safe — and tune to low-frequency danger sounds when stressed.",
     evidence: "Porges Polyvagal Theory; Ayres Sensory Integration; Champagne Sensory Modulation",
     samhsa: "Safety, Trustworthiness & Transparency",
@@ -441,7 +441,7 @@ const SENSORY = [
     },
   },
   {
-    id: "visual", label: "Visual", color: "#27ae60",
+    id: "visual", label: "Visual", color: "#4f9c74",
     neuroscience: "The visual system is a primary threat-detection channel. Students with trauma histories may be hypervigilant to movement in their peripheral visual field, facial expressions, or environmental changes. Fluorescent lighting can increase stress. Visual predictability signals safety to the nervous system.",
     evidence: "Ayres Sensory Integration; Ogden Sensorimotor Psychotherapy; Champagne Sensory Modulation",
     samhsa: "Safety, Trustworthiness & Transparency",
@@ -468,7 +468,7 @@ const SENSORY = [
     },
   },
   {
-    id: "proprioceptive", label: "Proprioceptive / Heavy Work", color: "#9b59b6",
+    id: "proprioceptive", label: "Proprioceptive / Heavy Work", color: "#7a5ea8",
     neuroscience: "Proprioception — input from muscles and joints — is one of the most powerful organizing sensory systems. Deep pressure and heavy work activate the parasympathetic nervous system, helping to downregulate fight/flight responses. For students with trauma, proprioceptive input can restore a sense of where their body is in space — a felt sense of 'I am here, I am real, I am contained.'",
     evidence: "Ayres Sensory Integration; Champagne Sensory Modulation; Ogden Sensorimotor Psychotherapy",
     samhsa: "Safety, Empowerment/Voice/Choice",
@@ -495,7 +495,7 @@ const SENSORY = [
     },
   },
   {
-    id: "vestibular", label: "Vestibular", color: "#e63946",
+    id: "vestibular", label: "Vestibular", color: "#c47086",
     neuroscience: "The vestibular system detects movement and gravity — it is foundational to feeling grounded and oriented in space. Trauma can make the vestibular system hyperreactive (anxiety with movement, motion sickness, gravitational insecurity) or hyporeactive (constant seeking of spinning, rocking, or swinging). Slow, rhythmic vestibular input is one of the most powerful calming inputs available.",
     evidence: "Ayres Sensory Integration; Perry NMT (rhythmic, brainstem-level input); Porges Polyvagal Theory",
     samhsa: "Safety, Collaboration & Mutuality",
@@ -522,7 +522,7 @@ const SENSORY = [
     },
   },
   {
-    id: "olfactory", label: "Olfactory / Gustatory", color: "#2c8c99",
+    id: "olfactory", label: "Olfactory / Gustatory", color: "#5a8aaa",
     neuroscience: "Smell and taste bypass the thalamus and connect directly to the amygdala and hippocampus — making them the most powerful triggers for traumatic memory. A smell can instantly transport a student to a past unsafe experience. For feeding/swallowing SLPs, this is especially critical: food introduction must be consent-based and paced.",
     evidence: "Ayres Sensory Integration; Champagne Sensory Modulation; Ogden Sensorimotor Psychotherapy",
     samhsa: "Safety, Empowerment/Voice/Choice",
@@ -554,7 +554,7 @@ const SENSORY = [
 
 const INTEROCEPTION = [
   {
-    level: 1, label: "Awareness", subtitle: "Noticing body signals", color: "#7eb8e0",
+    level: 1, label: "Awareness", subtitle: "Noticing body signals", color: "#5a8aaa",
     source: "Mahler et al., 2022, 2024",
     desc: "Can the student notice and attend to body signals — heartbeat, breathing, stomach sensations, muscle tension — without judgment?",
     traumaNote: "Trauma disrupts interoceptive accuracy. Body sensations may feel unsafe, overwhelming, or meaningless. Never force awareness. Start with external senses as a bridge if needed (exteroception before interoception). Validate confusion, numbness, or avoidance as protective adaptations.",
@@ -567,7 +567,7 @@ const INTEROCEPTION = [
     ],
   },
   {
-    level: 2, label: "Discrimination", subtitle: "What does the signal mean?", color: "#e89b2d",
+    level: 2, label: "Discrimination", subtitle: "What does the signal mean?", color: "#b87c4e",
     source: "Mahler et al., 2022, 2024",
     desc: "Can the student identify what a body signal means — distinguishing between hunger and anxiety, excitement and fear, tiredness and sadness?",
     traumaNote: "For students with alexithymia (common in trauma), body signals may all feel the same ('bad') or may not be connected to emotion words at all. This is a protective adaptation, not a deficit. Go slowly. Use curiosity, not correction: 'I wonder what that feeling might be about.'",
@@ -580,7 +580,7 @@ const INTEROCEPTION = [
     ],
   },
   {
-    level: 3, label: "Action", subtitle: "What does my body need?", color: "#27ae60",
+    level: 3, label: "Action", subtitle: "What does my body need?", color: "#4f9c74",
     source: "Mahler et al., 2022, 2024",
     desc: "Can the student connect body signals to self-regulation strategies proactively — using internal cues to guide action before reaching crisis?",
     traumaNote: "This level requires Levels 1 and 2 to be in place. For students with trauma, the idea that 'my body can tell me what I need' may be completely new. This is a paradigm shift: from 'adults tell me what to do with my body' to 'I can listen to my own body.' Celebrate every attempt.",
@@ -611,9 +611,36 @@ const ENV_CHECKLIST = {
 
 const STYLE = `
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.6; transition: background 0.3s, color 0.3s; }
-button { font-family: 'Outfit', sans-serif; cursor: pointer; }
-@media print { body { background: #fff !important; color: #222 !important; } .no-print { display: none !important; } }
+body {
+  font-family: 'DM Sans', 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+  position: relative;
+  min-height: 100vh;
+}
+:root { --ec-lavender-soft: #efe8f6; --ec-mint-soft: #e8f6ed; --ec-pink-soft: #faeaee; }
+[data-theme="dark"] { --ec-lavender-soft: #261e30; --ec-mint-soft: #1e2b22; --ec-pink-soft: #2e1f24; }
+body::before {
+  content: '';
+  position: fixed; pointer-events: none; inset: 0;
+  background:
+    radial-gradient(circle at 10% 15%, var(--ec-lavender-soft) 0%, transparent 40%),
+    radial-gradient(circle at 92% 78%, var(--ec-mint-soft) 0%, transparent 44%),
+    radial-gradient(circle at 50% 50%, var(--ec-pink-soft) 0%, transparent 30%);
+  opacity: 0.85;
+  z-index: 0;
+}
+[data-theme="dark"] body::before { opacity: 0.35; }
+:focus-visible { outline: 2px solid #b8a0d8 !important; outline-offset: 3px; border-radius: 2px; }
+::selection { background: var(--ec-lavender-soft); color: inherit; }
+button { font-family: 'DM Sans', 'Outfit', sans-serif; cursor: pointer; }
+@media print {
+  body { background: #fff !important; color: #222 !important; }
+  body::before { display: none !important; }
+  .rainbow-bar { display: none !important; }
+  .no-print { display: none !important; }
+}
 `;
 
 // ─────────── COMPONENTS ───────────
@@ -770,7 +797,9 @@ function AboutModal({ onClose, t }) {
 // ─────────── MAIN APP ───────────
 
 export default function App() {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(() => {
+    try { return localStorage.getItem('rtn-theme') === 'dark'; } catch (e) { return false; }
+  });
   const [activity, setActivity] = useState("");
   const [activeTab, setActiveTab] = useState("samhsa");
   const [expanded, setExpanded] = useState(null);
@@ -779,6 +808,11 @@ export default function App() {
   const [nervousState, setNervousState] = useState(null);
   const [wotZone, setWotZone] = useState(null);
   const [showAbout, setShowAbout] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    try { localStorage.setItem('rtn-theme', dark ? 'dark' : 'light'); } catch (e) {}
+  }, [dark]);
 
   const t = dark ? T.dark : T.light;
 
