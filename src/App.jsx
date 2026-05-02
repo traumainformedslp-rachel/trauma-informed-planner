@@ -612,7 +612,7 @@ const ENV_CHECKLIST = {
 const STYLE = `
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: 'DM Sans', 'Outfit', sans-serif;
+  font-family: 'DM Sans', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
   transition: background 0.3s ease, color 0.3s ease;
@@ -634,7 +634,7 @@ body::before {
 [data-theme="dark"] body::before { opacity: 0.35; }
 :focus-visible { outline: 2px solid #b8a0d8 !important; outline-offset: 3px; border-radius: 2px; }
 ::selection { background: var(--ec-lavender-soft); color: inherit; }
-button { font-family: 'DM Sans', 'Outfit', sans-serif; cursor: pointer; }
+button { font-family: 'DM Sans', system-ui, sans-serif; cursor: pointer; }
 @media print {
   body { background: #fff !important; color: #222 !important; }
   body::before { display: none !important; }
@@ -649,7 +649,7 @@ function ThemeToggle({ dark, toggle, t }) {
   return (
     <button onClick={toggle} className="no-print" style={{
       background: "transparent", border: `1px solid ${t.border}`, borderRadius: 20,
-      padding: "5px 14px", fontFamily: "'Space Mono', monospace", fontSize: 11,
+      padding: "5px 14px", fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11,
       color: t.textMuted, cursor: "pointer", transition: "all 0.2s",
       display: "inline-flex", alignItems: "center", gap: 6,
     }}>
@@ -659,7 +659,7 @@ function ThemeToggle({ dark, toggle, t }) {
 }
 
 const Tag = ({ text, color, t }) => (
-  <span style={{ display: "inline-block", padding: "2px 8px", borderRadius: 10, fontSize: 10, fontFamily: "'Space Mono', monospace", fontWeight: 700, background: `${color}18`, color, marginRight: 4, marginBottom: 4, letterSpacing: 0.5, }}>{text}</span>
+  <span style={{ display: "inline-block", padding: "2px 8px", borderRadius: 10, fontSize: 10, fontFamily: "'DM Sans', system-ui, sans-serif", fontWeight: 700, background: `${color}18`, color, marginRight: 4, marginBottom: 4, letterSpacing: 0.5, }}>{text}</span>
 );
 
 const SettingTags = ({ settings }) => (
@@ -672,14 +672,14 @@ function SectionCard({ color, title, desc, source, children, open, onToggle, t }
       <button onClick={onToggle} style={{ width: "100%", background: "transparent", border: "none", padding: "16px 20px", display: "flex", alignItems: "center", gap: 12, cursor: "pointer", textAlign: "left" }}>
         <span style={{ width: 10, height: 10, borderRadius: "50%", background: color, flexShrink: 0 }} />
         <div style={{ flex: 1 }}>
-          <div style={{ fontFamily: "'Space Mono', monospace", fontWeight: 700, fontSize: 13, color, letterSpacing: 1, textTransform: "uppercase" }}>{title}</div>
+          <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontWeight: 700, fontSize: 13, color, letterSpacing: 1, textTransform: "uppercase" }}>{title}</div>
           <div style={{ fontSize: 13, color: t.textMuted, marginTop: 2 }}>{desc}</div>
         </div>
         <span style={{ color: t.textDim, fontSize: 18, transition: "transform 0.2s", transform: open ? "rotate(180deg)" : "rotate(0deg)" }}>{"\u25BE"}</span>
       </button>
       {open && (
         <div style={{ padding: "0 20px 20px", borderTop: `1px solid ${t.border}` }}>
-          {source && <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: t.textDim, marginTop: 10, marginBottom: 4, fontStyle: "italic" }}>{source}</div>}
+          {source && <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, color: t.textDim, marginTop: 10, marginBottom: 4, fontStyle: "italic" }}>{source}</div>}
           {children}
         </div>
       )}
@@ -691,7 +691,7 @@ function PromptList({ prompts, activity, color, t }) {
   const fill = (s) => s.replace(/\{activity\}/g, activity || "this activity");
   return (
     <div style={{ marginTop: 14 }}>
-      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, color, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Reflection Prompts</div>
+      <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, color, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Reflection Prompts</div>
       {prompts.map((p, i) => (
         <div key={i} style={{ fontSize: 14, color: t.text, padding: "8px 0", borderBottom: i < prompts.length - 1 ? `1px solid ${t.border}` : "none", lineHeight: 1.6 }}>
           <span style={{ color, marginRight: 8, fontWeight: 700 }}>{i + 1}.</span>{fill(p)}
@@ -704,7 +704,7 @@ function PromptList({ prompts, activity, color, t }) {
 function AdaptationList({ adaptations, checked, onCheck, sectionId, color, t }) {
   return (
     <div style={{ marginTop: 16 }}>
-      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, color, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Suggested Adaptations</div>
+      <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, color, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Suggested Adaptations</div>
       {adaptations.map((a, i) => {
         const key = `${sectionId}_${i}`;
         const isChecked = checked[key] || false;
@@ -732,8 +732,8 @@ function AdaptationList({ adaptations, checked, onCheck, sectionId, color, t }) 
 function NotesField({ value, onChange, color, t }) {
   return (
     <div style={{ marginTop: 16 }}>
-      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, color, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Your Notes</div>
-      <textarea value={value} onChange={(e) => onChange(e.target.value)} placeholder="Add notes for this section..." rows={3} style={{ width: "100%", background: t.inputBg, color: t.text, border: `1px solid ${t.border}`, borderRadius: 8, padding: 12, fontSize: 14, fontFamily: "'Outfit', sans-serif", resize: "vertical", outline: "none", lineHeight: 1.6 }} />
+      <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, color, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Your Notes</div>
+      <textarea value={value} onChange={(e) => onChange(e.target.value)} placeholder="Add notes for this section..." rows={3} style={{ width: "100%", background: t.inputBg, color: t.text, border: `1px solid ${t.border}`, borderRadius: 8, padding: 12, fontSize: 14, fontFamily: "'DM Sans', system-ui, sans-serif", resize: "vertical", outline: "none", lineHeight: 1.6 }} />
     </div>
   );
 }
@@ -741,7 +741,7 @@ function NotesField({ value, onChange, color, t }) {
 // ─────────── ABOUT MODAL ───────────
 
 function AboutModal({ onClose, t }) {
-  const h3 = { fontFamily: "'Fraunces', Georgia, serif", fontSize: 18, fontWeight: 600, color: t.text, margin: "22px 0 8px", display: "flex", alignItems: "center", gap: 8 };
+  const h3 = { fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 600, color: t.text, margin: "22px 0 8px", display: "flex", alignItems: "center", gap: 8 };
   const p = { fontSize: 14, color: t.textSub, lineHeight: 1.65, marginBottom: 10 };
   const li = { fontSize: 14, color: t.textSub, lineHeight: 1.65, marginBottom: 4 };
   return (
@@ -753,8 +753,8 @@ function AboutModal({ onClose, t }) {
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{ width: 44, height: 44, borderRadius: 12, background: t.gradient, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>📖</div>
             <div>
-              <h2 id="about-title" style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 22, fontWeight: 700, color: t.text, lineHeight: 1.2 }}>About Activity Adaptation Planner</h2>
-              <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textMuted, letterSpacing: 1, marginTop: 2 }}>RTN Communication &amp; Literacy</div>
+              <h2 id="about-title" style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 22, fontWeight: 700, color: t.text, lineHeight: 1.2 }}>About Activity Adaptation Planner</h2>
+              <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted, letterSpacing: 1, marginTop: 2 }}>RTN Communication &amp; Literacy</div>
             </div>
           </div>
           <button onClick={onClose} aria-label="Close" style={{ background: "transparent", border: "none", color: t.textMuted, fontSize: 26, lineHeight: 1, cursor: "pointer", padding: 4 }}>×</button>
@@ -786,7 +786,7 @@ function AboutModal({ onClose, t }) {
             Norton, R. T. (2026). Activity Adaptation Planner: A trauma-informed lens for adapting learning activities [Web application]. RTN Communication &amp; Literacy.
           </div>
 
-          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textDim, letterSpacing: 0.5, marginTop: 18, textAlign: "center" }}>Code licensed under MIT. Educational content licensed under CC BY-NC 4.0.</div>
+          <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textDim, letterSpacing: 0.5, marginTop: 18, textAlign: "center" }}>Code licensed under MIT. Educational content licensed under CC BY-NC 4.0.</div>
           <div aria-hidden="true" style={{ height: 3, borderRadius: 3, background: t.rainbow, marginTop: 14 }} />
         </div>
       </div>
@@ -876,24 +876,24 @@ export default function App() {
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24 }}>
         <div>
-          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", color: t.textDim, marginBottom: 4 }}>Trauma-Informed Practice</div>
-          <h1 style={{ fontFamily: "'Fraunces', Georgia, serif", fontSize: 34, fontWeight: 700, color: t.text, letterSpacing: -0.5, marginBottom: 6, lineHeight: 1.1 }}>Activity Adaptation Planner</h1>
-          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textMuted, letterSpacing: 1 }}>SAMHSA + DIR + Polyvagal + NMT + Sensory + Interoception</div>
+          <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: "uppercase", color: t.textDim, marginBottom: 4 }}>Trauma-Informed Practice</div>
+          <h1 style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 34, fontWeight: 700, color: t.text, letterSpacing: -0.5, marginBottom: 6, lineHeight: 1.1 }}>Activity Adaptation Planner</h1>
+          <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted, letterSpacing: 1 }}>SAMHSA + DIR + Polyvagal + NMT + Sensory + Interoception</div>
         </div>
         <ThemeToggle dark={dark} toggle={() => setDark((d) => !d)} t={t} />
       </div>
 
       {/* Activity Input */}
       <div style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 16, padding: 24, marginBottom: 28, transition: "all 0.3s" }}>
-        <label style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: t.textDim, display: "block", marginBottom: 10 }}>Describe the Activity</label>
-        <input type="text" value={activity} onChange={(e) => setActivity(e.target.value)} placeholder="e.g., worksheet in class, reading a passage aloud, group discussion..." style={{ width: "100%", background: t.inputBg, color: t.text, border: `1px solid ${t.border}`, borderRadius: 10, padding: "14px 16px", fontSize: 16, fontFamily: "'Outfit', sans-serif", outline: "none", transition: "border-color 0.2s" }} onFocus={(e) => (e.target.style.borderColor = t.accent)} onBlur={(e) => (e.target.style.borderColor = t.border)} />
+        <label style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: t.textDim, display: "block", marginBottom: 10 }}>Describe the Activity</label>
+        <input type="text" value={activity} onChange={(e) => setActivity(e.target.value)} placeholder="e.g., worksheet in class, reading a passage aloud, group discussion..." style={{ width: "100%", background: t.inputBg, color: t.text, border: `1px solid ${t.border}`, borderRadius: 10, padding: "14px 16px", fontSize: 16, fontFamily: "'DM Sans', system-ui, sans-serif", outline: "none", transition: "border-color 0.2s" }} onFocus={(e) => (e.target.style.borderColor = t.accent)} onBlur={(e) => (e.target.style.borderColor = t.border)} />
         {activity && <div style={{ marginTop: 12, fontSize: 13, color: t.textMuted, lineHeight: 1.5 }}>Adapt <strong style={{ color: t.text }}>"{activity}"</strong> through the lenses below.</div>}
       </div>
 
       {/* Tabs */}
       <div className="no-print" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 20 }}>
         {tabs.map((tab) => (
-          <button key={tab.key} onClick={() => { setActiveTab(tab.key); setExpanded(null); }} style={{ padding: "8px 16px", borderRadius: 999, border: `1px solid ${activeTab === tab.key ? "transparent" : t.border}`, background: activeTab === tab.key ? t.gradient : "transparent", color: activeTab === tab.key ? "#fff" : t.textMuted, fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.2s", cursor: "pointer", boxShadow: activeTab === tab.key ? "0 3px 12px rgba(138,108,184,0.25)" : "none" }}>
+          <button key={tab.key} onClick={() => { setActiveTab(tab.key); setExpanded(null); }} style={{ padding: "8px 16px", borderRadius: 999, border: `1px solid ${activeTab === tab.key ? "transparent" : t.border}`, background: activeTab === tab.key ? t.gradient : "transparent", color: activeTab === tab.key ? "#fff" : t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.2s", cursor: "pointer", boxShadow: activeTab === tab.key ? "0 3px 12px rgba(138,108,184,0.25)" : "none" }}>
             {tab.label}
           </button>
         ))}
@@ -925,7 +925,7 @@ export default function App() {
                 <AdaptationList adaptations={d.adaptations} checked={checked} onCheck={toggleCheck} sectionId={id} color={d.color} t={t} />
                 {d.sensory?.length > 0 && (
                   <div style={{ marginTop: 16 }}>
-                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, color: d.color, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Sensory Considerations</div>
+                    <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, color: d.color, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Sensory Considerations</div>
                     {d.sensory.map((s, i) => <div key={i} style={{ fontSize: 13, color: t.textSub, padding: "4px 0", lineHeight: 1.5 }}><span style={{ color: d.color, marginRight: 6 }}>{"\u2022"}</span>{s}</div>)}
                   </div>
                 )}
@@ -941,13 +941,13 @@ export default function App() {
         <div>
           {/* Polyvagal State Check */}
           <div style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 24, marginBottom: 20 }}>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: t.textDim, textTransform: "uppercase", marginBottom: 4 }}>Polyvagal State Check</div>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: t.textDim, fontStyle: "italic", marginBottom: 12 }}>Porges, 2011 — "State first, then story"</div>
+            <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: t.textDim, textTransform: "uppercase", marginBottom: 4 }}>Polyvagal State Check</div>
+            <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, color: t.textDim, fontStyle: "italic", marginBottom: 12 }}>Porges, 2011 — "State first, then story"</div>
             <div style={{ fontSize: 13, color: t.textMuted, marginBottom: 16, lineHeight: 1.6 }}>Before planning sensory adaptations, consider: what nervous system state is this student in right now? Sensory input should match the state.</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {POLYVAGAL_STATES.map((s) => (
                 <button key={s.id} onClick={() => setNervousState(s.id)} style={{ background: nervousState === s.id ? `${s.color}15` : "transparent", border: `1px solid ${nervousState === s.id ? s.color : t.border}`, borderLeft: `3px solid ${s.color}`, borderRadius: 12, padding: 16, textAlign: "left", cursor: "pointer", transition: "all 0.2s" }}>
-                  <div style={{ fontFamily: "'Space Mono', monospace", fontWeight: 700, fontSize: 13, color: s.color, letterSpacing: 1 }}>{s.icon} {s.label} <span style={{ fontWeight: 400, fontSize: 11, color: t.textMuted }}>— {s.subtitle}</span></div>
+                  <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontWeight: 700, fontSize: 13, color: s.color, letterSpacing: 1 }}>{s.icon} {s.label} <span style={{ fontWeight: 400, fontSize: 11, color: t.textMuted }}>— {s.subtitle}</span></div>
                   <div style={{ fontSize: 13, color: t.text, marginTop: 6, lineHeight: 1.5 }}>{s.desc}</div>
                   {nervousState === s.id && (
                     <div style={{ marginTop: 10, padding: 12, background: `${s.color}10`, borderRadius: 8 }}>
@@ -964,13 +964,13 @@ export default function App() {
 
           {/* Window of Tolerance */}
           <div style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 24, marginBottom: 20 }}>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: t.textDim, textTransform: "uppercase", marginBottom: 4 }}>Window of Tolerance</div>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: t.textDim, fontStyle: "italic", marginBottom: 12 }}>Siegel, 2012; Ogden et al., 2006</div>
+            <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: t.textDim, textTransform: "uppercase", marginBottom: 4 }}>Window of Tolerance</div>
+            <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, color: t.textDim, fontStyle: "italic", marginBottom: 12 }}>Siegel, 2012; Ogden et al., 2006</div>
             <div style={{ fontSize: 13, color: t.textMuted, marginBottom: 16, lineHeight: 1.6 }}>Where is the student right now? Adaptations should match the zone — calming for hyperarousal, activating for hypoarousal, enriching within the window.</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {WINDOW_ZONES.map((z) => (
                 <button key={z.id} onClick={() => setWotZone(z.id)} style={{ background: wotZone === z.id ? `${z.color}15` : "transparent", border: `1px solid ${wotZone === z.id ? z.color : t.border}`, borderLeft: `3px solid ${z.color}`, borderRadius: 12, padding: 16, textAlign: "left", cursor: "pointer", transition: "all 0.2s" }}>
-                  <div style={{ fontFamily: "'Space Mono', monospace", fontWeight: 700, fontSize: 13, color: z.color, letterSpacing: 1 }}>{z.label}</div>
+                  <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontWeight: 700, fontSize: 13, color: z.color, letterSpacing: 1 }}>{z.label}</div>
                   <div style={{ fontSize: 13, color: t.textMuted, marginTop: 4, lineHeight: 1.5 }}>{z.desc}</div>
                   {wotZone === z.id && (
                     <div style={{ marginTop: 10 }}>
@@ -985,8 +985,8 @@ export default function App() {
 
           {/* NMT Readiness */}
           <div style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 24 }}>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: t.textDim, textTransform: "uppercase", marginBottom: 4 }}>NMT Readiness Sequence</div>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: t.textDim, fontStyle: "italic", marginBottom: 12 }}>Perry, 2006 — "Regulate, Relate, Reason"</div>
+            <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: t.textDim, textTransform: "uppercase", marginBottom: 4 }}>NMT Readiness Sequence</div>
+            <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, color: t.textDim, fontStyle: "italic", marginBottom: 12 }}>Perry, 2006 — "Regulate, Relate, Reason"</div>
             <div style={{ fontSize: 13, color: t.textMuted, marginBottom: 16, lineHeight: 1.6 }}>Interventions must follow a bottom-up sequence. Start at the brainstem. You cannot reason with a dysregulated brain.</div>
             {NMT_SEQUENCE.map((n) => (
               <SectionCard key={n.level} color={n.color} title={`${n.label}: ${n.subtitle}`} desc={n.desc} open={expanded === `nmt${n.level}`} onToggle={() => toggleExpand(`nmt${n.level}`)} t={t}>
@@ -1010,7 +1010,7 @@ export default function App() {
             <SectionCard key={s.id} color={s.color} title={s.label} desc={s.reauthoring} source={s.evidence} open={expanded === s.id} onToggle={() => toggleExpand(s.id)} t={t}>
               {/* Neuroscience rationale */}
               <div style={{ marginTop: 10, padding: 14, background: `${s.color}08`, borderRadius: 10, borderLeft: `2px solid ${s.color}` }}>
-                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, fontWeight: 700, color: s.color, letterSpacing: 1, textTransform: "uppercase", marginBottom: 4 }}>Why trauma impacts this sense</div>
+                <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 700, color: s.color, letterSpacing: 1, textTransform: "uppercase", marginBottom: 4 }}>Why trauma impacts this sense</div>
                 <div style={{ fontSize: 13, color: t.text, lineHeight: 1.6 }}>{s.neuroscience}</div>
               </div>
               <div style={{ marginTop: 8 }}><Tag text={`SAMHSA: ${s.samhsa}`} color={s.color} t={t} /></div>
@@ -1018,7 +1018,7 @@ export default function App() {
               <AdaptationList adaptations={s.adaptations} checked={checked} onCheck={toggleCheck} sectionId={s.id} color={s.color} t={t} />
               {/* Cross-setting guide */}
               <div style={{ marginTop: 16 }}>
-                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, color: s.color, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Across Settings</div>
+                <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, color: s.color, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Across Settings</div>
                 {Object.entries(s.crossSetting).map(([setting, text]) => (
                   <div key={setting} style={{ fontSize: 13, color: t.text, padding: "6px 0", borderBottom: `1px solid ${t.border}`, lineHeight: 1.5 }}>
                     <span style={{ fontWeight: 700, color: s.color }}>{setting === "school" ? "\uD83C\uDFEB" : setting === "clinic" ? "\uD83C\uDFE5" : setting === "home" ? "\uD83C\uDFE0" : "\uD83D\uDCBB"} {setting.charAt(0).toUpperCase() + setting.slice(1)}:</span> {text}
@@ -1031,12 +1031,12 @@ export default function App() {
 
           {/* Sensory Environment Checklist */}
           <div style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 24, marginTop: 20 }}>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: t.textDim, textTransform: "uppercase", marginBottom: 4 }}>Sensory Environment Checklist</div>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: t.textDim, fontStyle: "italic", marginBottom: 12 }}>Champagne & Stromberg, 2004</div>
+            <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: t.textDim, textTransform: "uppercase", marginBottom: 4 }}>Sensory Environment Checklist</div>
+            <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, color: t.textDim, fontStyle: "italic", marginBottom: 12 }}>Champagne & Stromberg, 2004</div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
               {ENV_CHECKLIST.categories.map((cat) => (
                 <div key={cat.label}>
-                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, color: t.accent, letterSpacing: 1, marginBottom: 6 }}>{cat.label}</div>
+                  <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, color: t.accent, letterSpacing: 1, marginBottom: 6 }}>{cat.label}</div>
                   {cat.items.map((item, i) => {
                     const key = `env_${cat.label}_${i}`;
                     return (
@@ -1057,10 +1057,10 @@ export default function App() {
       {activeTab === "interoception" && (
         <div>
           <div style={{ fontSize: 13, color: t.textMuted, marginBottom: 6, lineHeight: 1.6 }}>Kelly Mahler's Interoception Curriculum — the gold-standard evidence-based approach for building body-signal awareness, emotional regulation, and self-advocacy.</div>
-          <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: t.textDim, fontStyle: "italic", marginBottom: 16 }}>Mahler et al., 2022 (OT International); Mahler et al., 2024 (OT Health Care)</div>
+          <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, color: t.textDim, fontStyle: "italic", marginBottom: 16 }}>Mahler et al., 2022 (OT International); Mahler et al., 2024 (OT Health Care)</div>
 
           <div style={{ background: `${t.accent}10`, border: `1px solid ${t.accent}30`, borderRadius: 12, padding: 16, marginBottom: 20 }}>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, color: t.accent, letterSpacing: 1, textTransform: "uppercase", marginBottom: 6 }}>Trauma Considerations for All Interoception Work</div>
+            <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, color: t.accent, letterSpacing: 1, textTransform: "uppercase", marginBottom: 6 }}>Trauma Considerations for All Interoception Work</div>
             <div style={{ fontSize: 13, color: t.text, lineHeight: 1.7 }}>
               {"\u2022"} Felt safety must be established before interoception work begins<br />
               {"\u2022"} Paced, curiosity-based exploration only — frame as "noticing," not "fixing"<br />
@@ -1075,11 +1075,11 @@ export default function App() {
             return (
               <SectionCard key={id} color={lvl.color} title={`Level ${lvl.level}: ${lvl.label}`} desc={lvl.desc} source={lvl.source} open={expanded === id} onToggle={() => toggleExpand(id)} t={t}>
                 <div style={{ marginTop: 10, padding: 14, background: `${lvl.color}08`, borderRadius: 10, borderLeft: `2px solid ${lvl.color}` }}>
-                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, fontWeight: 700, color: lvl.color, letterSpacing: 1, textTransform: "uppercase", marginBottom: 4 }}>Trauma Note</div>
+                  <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 700, color: lvl.color, letterSpacing: 1, textTransform: "uppercase", marginBottom: 4 }}>Trauma Note</div>
                   <div style={{ fontSize: 13, color: t.text, lineHeight: 1.6 }}>{lvl.traumaNote}</div>
                 </div>
                 <div style={{ marginTop: 16 }}>
-                  <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, color: lvl.color, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Activities</div>
+                  <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, color: lvl.color, letterSpacing: 1, marginBottom: 8, textTransform: "uppercase" }}>Activities</div>
                   {lvl.activities.map((a, i) => {
                     const key = `${id}_${i}`;
                     const isChecked = checked[key] || false;
@@ -1108,9 +1108,9 @@ export default function App() {
       {activeTab === "summary" && (
         <div>
           <div style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 24, marginBottom: 20 }}>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: t.textDim, textTransform: "uppercase", marginBottom: 4 }}>Adaptation Plan</div>
+            <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: t.textDim, textTransform: "uppercase", marginBottom: 4 }}>Adaptation Plan</div>
             <div style={{ fontSize: 20, fontWeight: 800, color: t.text, marginBottom: 4 }}>{activity || "No activity entered"}</div>
-            <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textMuted }}>{new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</div>
+            <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted }}>{new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</div>
             {(nervousState || wotZone) && (
               <div style={{ marginTop: 10, display: "flex", gap: 8, flexWrap: "wrap" }}>
                 {nervousState && <Tag text={`Polyvagal: ${POLYVAGAL_STATES.find(s => s.id === nervousState)?.label}`} color={POLYVAGAL_STATES.find(s => s.id === nervousState)?.color} t={t} />}
@@ -1121,12 +1121,12 @@ export default function App() {
 
           {checkedAdaptations.length > 0 ? (
             <div style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 24, marginBottom: 20 }}>
-              <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 1, color: t.accent, textTransform: "uppercase", marginBottom: 14 }}>Selected Adaptations ({checkedAdaptations.length})</div>
+              <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 1, color: t.accent, textTransform: "uppercase", marginBottom: 14 }}>Selected Adaptations ({checkedAdaptations.length})</div>
               {checkedAdaptations.map((a, i) => (
                 <div key={i} style={{ padding: "10px 0", borderBottom: i < checkedAdaptations.length - 1 ? `1px solid ${t.border}` : "none", display: "flex", alignItems: "flex-start", gap: 10 }}>
                   <span style={{ width: 8, height: 8, borderRadius: "50%", background: a.color, flexShrink: 0, marginTop: 6 }} />
                   <div>
-                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, fontWeight: 700, color: a.color, letterSpacing: 1, textTransform: "uppercase" }}>{a.section}</div>
+                    <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 700, color: a.color, letterSpacing: 1, textTransform: "uppercase" }}>{a.section}</div>
                     <div style={{ fontSize: 14, color: t.text, lineHeight: 1.5, marginTop: 2 }}>{a.text}</div>
                   </div>
                 </div>
@@ -1140,7 +1140,7 @@ export default function App() {
 
           {activeNotes.length > 0 && (
             <div style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 24, marginBottom: 20 }}>
-              <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 1, color: t.accent, textTransform: "uppercase", marginBottom: 14 }}>Notes</div>
+              <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 1, color: t.accent, textTransform: "uppercase", marginBottom: 14 }}>Notes</div>
               {activeNotes.map(([id, text]) => {
                 const samhsa = SAMHSA.find((s) => s.id === id); const dir = DIR_LEVELS.find((d) => `dir${d.level}` === id);
                 const sens = SENSORY.find((s) => s.id === id); const intero = INTEROCEPTION.find((l) => `intero${l.level}` === id);
@@ -1148,7 +1148,7 @@ export default function App() {
                 const color = samhsa?.color || dir?.color || sens?.color || intero?.color || t.accent;
                 return (
                   <div key={id} style={{ padding: "10px 0", borderBottom: `1px solid ${t.border}` }}>
-                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, fontWeight: 700, color, letterSpacing: 1, textTransform: "uppercase", marginBottom: 4 }}>{label}</div>
+                    <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 700, color, letterSpacing: 1, textTransform: "uppercase", marginBottom: 4 }}>{label}</div>
                     <div style={{ fontSize: 14, color: t.text, lineHeight: 1.5, whiteSpace: "pre-wrap" }}>{text}</div>
                   </div>
                 );
@@ -1165,7 +1165,7 @@ export default function App() {
 
       {/* References */}
       <div style={{ background: t.card, border: `1px solid ${t.border}`, borderRadius: 14, padding: 24, marginTop: 40 }}>
-        <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: t.textDim, textTransform: "uppercase", marginBottom: 14 }}>References</div>
+        <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 2, color: t.textDim, textTransform: "uppercase", marginBottom: 14 }}>References</div>
         {REFERENCES.map((r) => (
           <div key={r.id} style={{ fontSize: 12, color: t.textMuted, lineHeight: 1.7, marginBottom: 6, paddingLeft: 20, textIndent: -20 }}>
             {r.url ? <a href={r.url} target="_blank" rel="noopener noreferrer" style={{ color: t.accent, textDecoration: "none" }}>{r.full}</a> : r.full}
@@ -1174,9 +1174,9 @@ export default function App() {
       </div>
 
       {/* Footer */}
-      <footer style={{ textAlign: "center", marginTop: 48, paddingTop: 20, borderTop: `1px solid ${t.border}`, fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textDim, letterSpacing: 0.5, lineHeight: 1.8 }}>
+      <footer style={{ textAlign: "center", marginTop: 48, paddingTop: 20, borderTop: `1px solid ${t.border}`, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textDim, letterSpacing: 0.5, lineHeight: 1.8 }}>
         <button onClick={() => setShowAbout(true)} className="no-print" aria-label="About this resource"
-          style={{ background: "transparent", border: `1px solid ${t.border}`, borderRadius: 20, padding: "6px 16px", fontFamily: "'Space Mono', monospace", fontSize: 11, color: t.textMuted, cursor: "pointer", letterSpacing: 0.5, marginBottom: 14, display: "inline-flex", alignItems: "center", gap: 6 }}>
+          style={{ background: "transparent", border: `1px solid ${t.border}`, borderRadius: 20, padding: "6px 16px", fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted, cursor: "pointer", letterSpacing: 0.5, marginBottom: 14, display: "inline-flex", alignItems: "center", gap: 6 }}>
           📖 About this resource
         </button>
         <p>Rachel Norton, MS, CCC-SLP</p>
