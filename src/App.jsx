@@ -2,24 +2,25 @@ import { useState, useEffect } from "react";
 
 // ─────────── THEME — Editorial Calm ───────────
 
-const GRADIENT = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 50%, #f4b5c5 100%)";
-const RAINBOW  = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 50%, #f4b5c5 100%)";
+// Warm pastel system shared with rachelslp.org home/about pages
+const GRADIENT = "linear-gradient(135deg, #f4a0b5 0%, #f6b889 16%, #f5d98a 32%, #8dd4b0 48%, #8dc4e8 64%, #b8a0d8 80%, #d4a0d8 100%)";
+const RAINBOW  = "linear-gradient(135deg, #f4a0b5 0%, #f6b889 16%, #f5d98a 32%, #8dd4b0 48%, #8dc4e8 64%, #b8a0d8 80%, #d4a0d8 100%)";
 
 const T = {
   dark: {
     bg: "#1a1815", card: "#232020", border: "#34302c", inputBg: "#1a1815",
-    text: "#ece5d9", textMuted: "#82796f", textDim: "#5c544c", textSub: "#b9b0a3",
+    text: "#ece5d9", textMuted: "#b9b0a3", textDim: "#82796f", textSub: "#b9b0a3",
     accent: "#c4abe2", btnBg: "#232020", tagBg: "#2a2724",
     checkBg: "#261e30", checkColor: "#c4abe2",
     zoneSafe: "#1e2b22", zoneHyper: "#2e1f24", zoneHypo: "#261e30",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
   light: {
-    bg: "#fbf8f4", card: "#ffffff", border: "#e6dfd5", inputBg: "#faf6f1",
-    text: "#2a2724", textMuted: "#56504a", textDim: "#847d75", textSub: "#56504a",
-    accent: "#7a5ea8", btnBg: "#faf6f1", tagBg: "#f5efe7",
-    checkBg: "#efe8f6", checkColor: "#7a5ea8",
-    zoneSafe: "#e8f6ed", zoneHyper: "#faeaee", zoneHypo: "#efe8f6",
+    bg: "#fefcfa", card: "#ffffff", border: "#ede6df", inputBg: "#fdf9f5",
+    text: "#2d2a26", textMuted: "#4a4640", textDim: "#76706a", textSub: "#4a4640",
+    accent: "#8a6cb8", btnBg: "#fdf9f5", tagBg: "#f3eefa",
+    checkBg: "#f3eefa", checkColor: "#8a6cb8",
+    zoneSafe: "#eefaf3", zoneHyper: "#fdf0f4", zoneHypo: "#f3eefa",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
 };
@@ -893,7 +894,7 @@ export default function App() {
       {/* Tabs */}
       <div className="no-print" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 20 }}>
         {tabs.map((tab) => (
-          <button key={tab.key} onClick={() => { setActiveTab(tab.key); setExpanded(null); }} style={{ padding: "8px 16px", borderRadius: 999, border: `1px solid ${activeTab === tab.key ? "transparent" : t.border}`, background: activeTab === tab.key ? t.gradient : "transparent", color: activeTab === tab.key ? "#fff" : t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.2s", cursor: "pointer", boxShadow: activeTab === tab.key ? "0 3px 12px rgba(138,108,184,0.25)" : "none" }}>
+          <button key={tab.key} onClick={() => { setActiveTab(tab.key); setExpanded(null); }} style={{ padding: "8px 16px", borderRadius: 999, border: `1px solid ${activeTab === tab.key ? "transparent" : t.border}`, background: activeTab === tab.key ? t.gradient : "transparent", color: activeTab === tab.key ? "#fff" : t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.2s", cursor: "pointer", boxShadow: activeTab === tab.key ? "0 3px 12px rgba(184,160,216,0.30)" : "none" }}>
             {tab.label}
           </button>
         ))}
