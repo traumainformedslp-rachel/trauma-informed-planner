@@ -2,24 +2,24 @@ import { useState, useEffect } from "react";
 
 // ─────────── THEME — Editorial Calm ───────────
 
-// Warm pastel system shared with rachelslp.org home/about pages
-const GRADIENT = "linear-gradient(135deg, #f4a0b5 0%, #f6b889 16%, #f5d98a 32%, #8dd4b0 48%, #8dc4e8 64%, #b8a0d8 80%, #d4a0d8 100%)";
-const RAINBOW  = "linear-gradient(135deg, #f4a0b5 0%, #f6b889 16%, #f5d98a 32%, #8dd4b0 48%, #8dc4e8 64%, #b8a0d8 80%, #d4a0d8 100%)";
+// Teal-accent system shared with the RTN Student Self-Report intake
+const GRADIENT = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 100%)";
+const RAINBOW  = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 100%)";
 
 const T = {
   dark: {
-    bg: "#1a1815", card: "#232020", border: "#34302c", inputBg: "#1a1815",
-    text: "#ece5d9", textMuted: "#b9b0a3", textDim: "#82796f", textSub: "#b9b0a3",
-    accent: "#c4abe2", btnBg: "#232020", tagBg: "#2a2724",
-    checkBg: "#261e30", checkColor: "#c4abe2",
+    bg: "#0e2424", card: "#163434", border: "#1f4040", inputBg: "#0e2424",
+    text: "#e6efef", textMuted: "#c0d4d4", textDim: "#5c7d7d", textSub: "#c0d4d4",
+    accent: "#4db8b8", btnBg: "#163434", tagBg: "#1a4040",
+    checkBg: "#1a4d4d", checkColor: "#4db8b8",
     zoneSafe: "#1e2b22", zoneHyper: "#2e1f24", zoneHypo: "#261e30",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
   light: {
-    bg: "#fefcfa", card: "#ffffff", border: "#ede6df", inputBg: "#fdf9f5",
-    text: "#2d2a26", textMuted: "#4a4640", textDim: "#76706a", textSub: "#4a4640",
-    accent: "#8a6cb8", btnBg: "#fdf9f5", tagBg: "#f3eefa",
-    checkBg: "#f3eefa", checkColor: "#8a6cb8",
+    bg: "#f0f4f4", card: "#ffffff", border: "#d4dfdf", inputBg: "#f7fafa",
+    text: "#1c2d2d", textMuted: "#3d5555", textDim: "#7a9191", textSub: "#3d5555",
+    accent: "#1a7a7a", btnBg: "#f7fafa", tagBg: "#f0faf9",
+    checkBg: "#e0f2f1", checkColor: "#1a7a7a",
     zoneSafe: "#eefaf3", zoneHyper: "#fdf0f4", zoneHypo: "#f3eefa",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
@@ -620,21 +620,8 @@ body {
   position: relative;
   min-height: 100vh;
 }
-:root { --ec-lavender-soft: #efe8f6; --ec-mint-soft: #e8f6ed; --ec-pink-soft: #faeaee; }
-[data-theme="dark"] { --ec-lavender-soft: #261e30; --ec-mint-soft: #1e2b22; --ec-pink-soft: #2e1f24; }
-body::before {
-  content: '';
-  position: fixed; pointer-events: none; inset: 0;
-  background:
-    radial-gradient(circle at 10% 15%, var(--ec-lavender-soft) 0%, transparent 40%),
-    radial-gradient(circle at 92% 78%, var(--ec-mint-soft) 0%, transparent 44%),
-    radial-gradient(circle at 50% 50%, var(--ec-pink-soft) 0%, transparent 30%);
-  opacity: 0.85;
-  z-index: 0;
-}
-[data-theme="dark"] body::before { opacity: 0.35; }
 :focus-visible { outline: 2px solid #b8a0d8 !important; outline-offset: 3px; border-radius: 2px; }
-::selection { background: var(--ec-lavender-soft); color: inherit; }
+::selection { background: rgba(184,160,216,0.25); color: inherit; }
 button { font-family: 'DM Sans', system-ui, sans-serif; cursor: pointer; }
 @media print {
   body { background: #fff !important; color: #222 !important; }
