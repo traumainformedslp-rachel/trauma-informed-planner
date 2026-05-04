@@ -3,24 +3,24 @@ import { useState, useEffect } from "react";
 // ─────────── THEME — Editorial Calm ───────────
 
 // Teal-accent system shared with the RTN Student Self-Report intake
-const GRADIENT = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 100%)";
-const RAINBOW  = "linear-gradient(90deg, #8dd4b0 0%, #b8a0d8 100%)";
+const GRADIENT = "#2a9d8f";
+const RAINBOW  = "#2a9d8f";
 
 const T = {
   dark: {
-    bg: "#0e2424", card: "#163434", border: "#1f4040", inputBg: "#0e2424",
-    text: "#e6efef", textMuted: "#c0d4d4", textDim: "#5c7d7d", textSub: "#c0d4d4",
-    accent: "#4db8b8", btnBg: "#163434", tagBg: "#1a4040",
-    checkBg: "#1a4d4d", checkColor: "#4db8b8",
-    zoneSafe: "#1e2b22", zoneHyper: "#2e1f24", zoneHypo: "#261e30",
+    bg: "#0d1b1a", card: "#142322", border: "#1e3332", inputBg: "#0d1b1a",
+    text: "#e0edec", textMuted: "#a3bfbd", textDim: "#6b8886", textSub: "#a3bfbd",
+    accent: "#3dbdad", btnBg: "#142322", tagBg: "#1e3332",
+    checkBg: "#1e3332", checkColor: "#3dbdad",
+    zoneSafe: "#1e2b22", zoneHyper: "#2e1f24", zoneHypo: "#1e3332",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
   light: {
-    bg: "#f0f4f4", card: "#ffffff", border: "#d4dfdf", inputBg: "#f7fafa",
-    text: "#1c2d2d", textMuted: "#3d5555", textDim: "#7a9191", textSub: "#3d5555",
-    accent: "#1a7a7a", btnBg: "#f7fafa", tagBg: "#f0faf9",
-    checkBg: "#e0f2f1", checkColor: "#1a7a7a",
-    zoneSafe: "#eefaf3", zoneHyper: "#fdf0f4", zoneHypo: "#f3eefa",
+    bg: "#ffffff", card: "#ffffff", border: "#ebebeb", inputBg: "#ffffff",
+    text: "#0f1419", textMuted: "#4a5560", textDim: "#9aa0a8", textSub: "#4a5560",
+    accent: "#2a9d8f", btnBg: "#ffffff", tagBg: "rgba(42,157,143,0.08)",
+    checkBg: "rgba(42,157,143,0.08)", checkColor: "#2a9d8f",
+    zoneSafe: "rgba(42,157,143,0.08)", zoneHyper: "rgba(224,122,122,0.08)", zoneHypo: "rgba(42,157,143,0.08)",
     gradient: GRADIENT, rainbow: RAINBOW,
   },
 };
@@ -111,7 +111,7 @@ const SAMHSA = [
     ],
   },
   {
-    id: "collaboration", label: "Collaboration & Mutuality", color: "#7a5ea8",
+    id: "collaboration", label: "Collaboration & Mutuality", color: "#2a9d8f",
     source: "SAMHSA, 2014; Greenspan & Wieder, 2006",
     desc: "Partnering with the student and leveling power differences in the relationship.",
     prompts: [
@@ -131,7 +131,7 @@ const SAMHSA = [
     ],
   },
   {
-    id: "empowerment", label: "Empowerment, Voice & Choice", color: "#c47086",
+    id: "empowerment", label: "Empowerment, Voice & Choice", color: "#1f7a6f",
     source: "SAMHSA, 2014; Cole et al., 2005",
     desc: "Prioritizing student agency, strengths, and self-advocacy throughout the activity.",
     prompts: [
@@ -248,7 +248,7 @@ const DIR_LEVELS = [
   },
   {
     level: 4, label: "Complex Communication & Problem-Solving", subtitle: "Sustained shared thinking",
-    color: "#7a5ea8", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
+    color: "#2a9d8f", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
     desc: "Can the student sustain a chain of back-and-forth interactions to solve problems or negotiate during the activity?",
     prompts: [
       "Does {activity} require sustained problem-solving or negotiation?",
@@ -271,7 +271,7 @@ const DIR_LEVELS = [
   },
   {
     level: 5, label: "Emotional Ideas", subtitle: "Symbolic & creative use of ideas",
-    color: "#c47086", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
+    color: "#1f7a6f", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
     desc: "Can the student use ideas creatively and symbolically — through language, pretend play, or imagination — during the activity?",
     prompts: [
       "Does {activity} invite creative or imaginative thinking?",
@@ -329,7 +329,7 @@ const POLYVAGAL_STATES = [
   },
   {
     id: "sympathetic", label: "Sympathetic", subtitle: "Fight / Flight",
-    color: "#c47086", icon: "\u26A1",
+    color: "#1f7a6f", icon: "\u26A1",
     desc: "The student's body is mobilized — restless, reactive, anxious, irritable, or hypervigilant. Their nervous system is saying 'danger.'",
     approach: "Prioritize calming and organizing sensory input. Do not add cognitive demands until the body settles.",
     sensoryFocus: "Calming input: deep pressure, slow rhythmic movement, low lighting, reduced noise, heavy work, weighted items",
@@ -344,7 +344,7 @@ const POLYVAGAL_STATES = [
 ];
 
 const WINDOW_ZONES = [
-  { id: "hyper", label: "Hyperarousal Zone", color: "#c47086",
+  { id: "hyper", label: "Hyperarousal Zone", color: "#1f7a6f",
     desc: "Above the window: anxiety, panic, hypervigilance, emotional flooding, aggression, rapid speech/movement",
     goal: "Bring the student DOWN into the window with calming, organizing, grounding input",
     strategies: ["Deep pressure (weighted blanket, bear hug, wall push-ups)", "Slow rhythmic movement (rocking, swinging)", "Cold water on wrists, ice cube to hold", "Dim lighting, reduce noise", "Slow, low-tone voice", "Bilateral movement (cross-body tapping, walking)"],
@@ -362,7 +362,7 @@ const WINDOW_ZONES = [
 ];
 
 const NMT_SEQUENCE = [
-  { level: 1, label: "Brainstem", subtitle: "Regulate", color: "#c47086",
+  { level: 1, label: "Brainstem", subtitle: "Regulate", color: "#1f7a6f",
     desc: "Patterned, repetitive, rhythmic, somatosensory. Address the body first — the brainstem controls basic regulation (heart rate, breathing, startle response, sleep-wake cycles).",
     question: "Is this student's body regulated enough to be present?",
     activities: ["Rhythmic drumming or clapping", "Rocking, swinging, bouncing", "Deep breathing with visual support", "Heavy work (carrying, pushing, pulling)", "Predictable routine and sensory environment"],
@@ -469,7 +469,7 @@ const SENSORY = [
     },
   },
   {
-    id: "proprioceptive", label: "Proprioceptive / Heavy Work", color: "#7a5ea8",
+    id: "proprioceptive", label: "Proprioceptive / Heavy Work", color: "#2a9d8f",
     neuroscience: "Proprioception — input from muscles and joints — is one of the most powerful organizing sensory systems. Deep pressure and heavy work activate the parasympathetic nervous system, helping to downregulate fight/flight responses. For students with trauma, proprioceptive input can restore a sense of where their body is in space — a felt sense of 'I am here, I am real, I am contained.'",
     evidence: "Ayres Sensory Integration; Champagne Sensory Modulation; Ogden Sensorimotor Psychotherapy",
     samhsa: "Safety, Empowerment/Voice/Choice",
@@ -496,7 +496,7 @@ const SENSORY = [
     },
   },
   {
-    id: "vestibular", label: "Vestibular", color: "#c47086",
+    id: "vestibular", label: "Vestibular", color: "#1f7a6f",
     neuroscience: "The vestibular system detects movement and gravity — it is foundational to feeling grounded and oriented in space. Trauma can make the vestibular system hyperreactive (anxiety with movement, motion sickness, gravitational insecurity) or hyporeactive (constant seeking of spinning, rocking, or swinging). Slow, rhythmic vestibular input is one of the most powerful calming inputs available.",
     evidence: "Ayres Sensory Integration; Perry NMT (rhythmic, brainstem-level input); Porges Polyvagal Theory",
     samhsa: "Safety, Collaboration & Mutuality",
@@ -620,13 +620,13 @@ body {
   position: relative;
   min-height: 100vh;
 }
-:focus-visible { outline: 2px solid #b8a0d8 !important; outline-offset: 3px; border-radius: 2px; }
-::selection { background: rgba(184,160,216,0.25); color: inherit; }
+:focus-visible { outline: 2px solid #2a9d8f !important; outline-offset: 3px; border-radius: 2px; }
+::selection { background: rgba(42,157,143,0.20); color: inherit; }
 button { font-family: 'DM Sans', system-ui, sans-serif; cursor: pointer; }
 @media print {
   body { background: #fff !important; color: #222 !important; }
   body::before { display: none !important; }
-  .rainbow-bar { display: none !important; }
+  .rainbow-bar, .rainbow-strip { display: none !important; }
   .no-print { display: none !important; }
 }
 `;
@@ -775,7 +775,7 @@ function AboutModal({ onClose, t }) {
           </div>
 
           <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textDim, letterSpacing: 0.5, marginTop: 18, textAlign: "center" }}>Code licensed under MIT. Educational content licensed under CC BY-NC 4.0.</div>
-          <div aria-hidden="true" style={{ height: 3, borderRadius: 3, background: t.rainbow, marginTop: 14 }} />
+          <div aria-hidden="true" style={{ display: "none", height: 3, borderRadius: 3, background: t.rainbow, marginTop: 14 }} />
         </div>
       </div>
     </div>
@@ -858,8 +858,8 @@ export default function App() {
   return (
     <div style={{ maxWidth: 720, margin: "0 auto", padding: "32px 20px 60px" }}>
 
-      {/* Rainbow accent strip */}
-      <div aria-hidden="true" style={{ height: 4, borderRadius: 3, background: t.rainbow, marginBottom: 20 }} />
+      {/* Accent strip — hidden */}
+      <div aria-hidden="true" style={{ display: "none", height: 4, borderRadius: 3, background: t.rainbow, marginBottom: 20 }} />
 
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24 }}>
@@ -881,7 +881,7 @@ export default function App() {
       {/* Tabs */}
       <div className="no-print" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 20 }}>
         {tabs.map((tab) => (
-          <button key={tab.key} onClick={() => { setActiveTab(tab.key); setExpanded(null); }} style={{ padding: "8px 16px", borderRadius: 999, border: `1px solid ${activeTab === tab.key ? "transparent" : t.border}`, background: activeTab === tab.key ? t.gradient : "transparent", color: activeTab === tab.key ? "#fff" : t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.2s", cursor: "pointer", boxShadow: activeTab === tab.key ? "0 3px 12px rgba(184,160,216,0.30)" : "none" }}>
+          <button key={tab.key} onClick={() => { setActiveTab(tab.key); setExpanded(null); }} style={{ padding: "8px 16px", borderRadius: 999, border: `1px solid ${activeTab === tab.key ? "transparent" : t.border}`, background: activeTab === tab.key ? t.accent : "transparent", color: activeTab === tab.key ? "#fff" : t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.2s", cursor: "pointer", boxShadow: activeTab === tab.key ? "0 3px 12px rgba(42,157,143,0.30)" : "none" }}>
             {tab.label}
           </button>
         ))}
