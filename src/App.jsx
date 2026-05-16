@@ -2,26 +2,25 @@ import { useState, useEffect } from "react";
 
 // ─────────── THEME — Editorial Calm ───────────
 
-// Teal-accent system shared with the RTN Student Self-Report intake
-const GRADIENT = "#2a9d8f";
-const RAINBOW  = "#2a9d8f";
+// Cividis palette accent system
+const CIVIDIS = "linear-gradient(90deg,#002051,#0a326a,#2b446e,#4d566d,#6b6b6f,#8a8678,#a9a373,#cac26d,#fdea45)";
 
 const T = {
   dark: {
-    bg: "#0d1b1a", card: "#142322", border: "#1e3332", inputBg: "#0d1b1a",
-    text: "#e0edec", textMuted: "#a3bfbd", textDim: "#6b8886", textSub: "#a3bfbd",
-    accent: "#3dbdad", btnBg: "#142322", tagBg: "#1e3332",
-    checkBg: "#1e3332", checkColor: "#3dbdad",
-    zoneSafe: "#1e2b22", zoneHyper: "#2e1f24", zoneHypo: "#1e3332",
-    gradient: GRADIENT, rainbow: RAINBOW,
+    bg: "#0d1510", card: "#1a2418", border: "#2b3326", inputBg: "#0d1510",
+    text: "#e8e4d8", textMuted: "#a9a373", textDim: "#6b6b6f", textSub: "#a9a373",
+    accent: "#cac26d", btnBg: "#1a2418", tagBg: "#2b3326",
+    checkBg: "#2b3326", checkColor: "#cac26d",
+    zoneSafe: "#1e2b22", zoneHyper: "#2e1f24", zoneHypo: "#2b3326",
+    gradient: CIVIDIS, rainbow: CIVIDIS,
   },
   light: {
-    bg: "#ffffff", card: "#ffffff", border: "#ebebeb", inputBg: "#ffffff",
-    text: "#0f1419", textMuted: "#4a5560", textDim: "#9aa0a8", textSub: "#4a5560",
-    accent: "#2a9d8f", btnBg: "#ffffff", tagBg: "rgba(42,157,143,0.08)",
-    checkBg: "rgba(42,157,143,0.08)", checkColor: "#2a9d8f",
-    zoneSafe: "rgba(42,157,143,0.08)", zoneHyper: "rgba(224,122,122,0.08)", zoneHypo: "rgba(42,157,143,0.08)",
-    gradient: GRADIENT, rainbow: RAINBOW,
+    bg: "#fafaf5", card: "#ffffff", border: "#e0ddd0", inputBg: "#ffffff",
+    text: "#1a1a2a", textMuted: "#4d566d", textDim: "#8a8678", textSub: "#4d566d",
+    accent: "#2b446e", btnBg: "#ffffff", tagBg: "rgba(43,68,110,0.08)",
+    checkBg: "rgba(43,68,110,0.08)", checkColor: "#2b446e",
+    zoneSafe: "rgba(43,68,110,0.08)", zoneHyper: "rgba(224,122,122,0.08)", zoneHypo: "rgba(43,68,110,0.08)",
+    gradient: CIVIDIS, rainbow: CIVIDIS,
   },
 };
 
@@ -111,7 +110,7 @@ const SAMHSA = [
     ],
   },
   {
-    id: "collaboration", label: "Collaboration & Mutuality", color: "#2a9d8f",
+    id: "collaboration", label: "Collaboration & Mutuality", color: "#2b446e",
     source: "SAMHSA, 2014; Greenspan & Wieder, 2006",
     desc: "Partnering with the student and leveling power differences in the relationship.",
     prompts: [
@@ -248,7 +247,7 @@ const DIR_LEVELS = [
   },
   {
     level: 4, label: "Complex Communication & Problem-Solving", subtitle: "Sustained shared thinking",
-    color: "#2a9d8f", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
+    color: "#2b446e", source: "Greenspan & Wieder, 2006; Greenspan, 1997",
     desc: "Can the student sustain a chain of back-and-forth interactions to solve problems or negotiate during the activity?",
     prompts: [
       "Does {activity} require sustained problem-solving or negotiation?",
@@ -469,7 +468,7 @@ const SENSORY = [
     },
   },
   {
-    id: "proprioceptive", label: "Proprioceptive / Heavy Work", color: "#2a9d8f",
+    id: "proprioceptive", label: "Proprioceptive / Heavy Work", color: "#2b446e",
     neuroscience: "Proprioception — input from muscles and joints — is one of the most powerful organizing sensory systems. Deep pressure and heavy work activate the parasympathetic nervous system, helping to downregulate fight/flight responses. For students with trauma, proprioceptive input can restore a sense of where their body is in space — a felt sense of 'I am here, I am real, I am contained.'",
     evidence: "Ayres Sensory Integration; Champagne Sensory Modulation; Ogden Sensorimotor Psychotherapy",
     samhsa: "Safety, Empowerment/Voice/Choice",
@@ -620,7 +619,7 @@ body {
   position: relative;
   min-height: 100vh;
 }
-:focus-visible { outline: 2px solid #2a9d8f !important; outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 2px solid #2b446e !important; outline-offset: 3px; border-radius: 2px; }
 ::selection { background: rgba(42,157,143,0.20); color: inherit; }
 button { font-family: 'DM Sans', system-ui, sans-serif; cursor: pointer; }
 @media print {
@@ -742,7 +741,7 @@ function AboutModal({ onClose, t }) {
             <div style={{ width: 44, height: 44, borderRadius: 12, background: t.gradient, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>📖</div>
             <div>
               <h2 id="about-title" style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 22, fontWeight: 700, color: t.text, lineHeight: 1.2 }}>About Activity Adaptation Planner</h2>
-              <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted, letterSpacing: 1, marginTop: 2 }}>RTN Communication &amp; Literacy</div>
+              <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textMuted, letterSpacing: 1, marginTop: 2 }}>RTN | Speech, Language &amp; Literacy</div>
             </div>
           </div>
           <button onClick={onClose} aria-label="Close" style={{ background: "transparent", border: "none", color: t.textMuted, fontSize: 26, lineHeight: 1, cursor: "pointer", padding: 4 }}>×</button>
@@ -771,7 +770,7 @@ function AboutModal({ onClose, t }) {
 
           <h3 style={h3}><span>📎</span>Citation</h3>
           <div style={{ fontSize: 13, color: t.textSub, fontStyle: "italic", background: t.inputBg, border: `1px solid ${t.border}`, borderRadius: 10, padding: "12px 14px", lineHeight: 1.6 }}>
-            Norton, R. T. (2026). Activity Adaptation Planner: A trauma-informed lens for adapting learning activities [Web application]. RTN Communication &amp; Literacy.
+            Norton, R. T. (2026). Activity Adaptation Planner: A trauma-informed lens for adapting learning activities [Web application]. RTN | Speech, Language &amp; Literacy.
           </div>
 
           <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: t.textDim, letterSpacing: 0.5, marginTop: 18, textAlign: "center" }}>Code licensed under MIT. Educational content licensed under CC BY-NC 4.0.</div>
@@ -881,7 +880,7 @@ export default function App() {
       {/* Tabs */}
       <div className="no-print" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 20 }}>
         {tabs.map((tab) => (
-          <button key={tab.key} onClick={() => { setActiveTab(tab.key); setExpanded(null); }} style={{ padding: "8px 16px", borderRadius: 999, border: `1px solid ${activeTab === tab.key ? "transparent" : t.border}`, background: activeTab === tab.key ? t.accent : "transparent", color: activeTab === tab.key ? "#fff" : t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.2s", cursor: "pointer", boxShadow: activeTab === tab.key ? "0 3px 12px rgba(42,157,143,0.30)" : "none" }}>
+          <button key={tab.key} onClick={() => { setActiveTab(tab.key); setExpanded(null); }} style={{ padding: "8px 16px", borderRadius: 999, border: `1px solid ${activeTab === tab.key ? "transparent" : t.border}`, background: activeTab === tab.key ? t.accent : "transparent", color: activeTab === tab.key ? "#fff" : t.textMuted, fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 0.5, transition: "all 0.2s", cursor: "pointer", boxShadow: activeTab === tab.key ? "0 3px 12px rgba(43,68,110,0.30)" : "none" }}>
             {tab.label}
           </button>
         ))}
@@ -1168,7 +1167,7 @@ export default function App() {
           📖 About this resource
         </button>
         <p>Rachel Norton, MS, CCC-SLP</p>
-        <p>RTN Communication & Literacy &middot; rachelslp.org</p>
+        <p>RTN | Speech, Language & Literacy &middot; rachelslp.org</p>
       </footer>
 
       {showAbout && <AboutModal onClose={() => setShowAbout(false)} t={t} />}
